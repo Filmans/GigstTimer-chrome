@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "GegstTmer",
+  "version": "2.5",
+  "description": "Таймер",
+  "permissions": [
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "16.png",
+      "48": "48.png",
+      "128": "128.png"
+    }
+  }
+}
