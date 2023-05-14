@@ -1,10 +1,11 @@
 {
   "manifest_version": 3,
   "name": "GegstTimer",
-  "version": "3.1",
+  "version": "3.5",
   "description": "Таймер для продуктивности работяг.",
   "permissions": [
     "activeTab"
+	
   ],
   "action": {
     "default_popup": "popup.html",
