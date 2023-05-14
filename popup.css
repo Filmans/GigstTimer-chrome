@@ -4,6 +4,7 @@ body {
   padding: 10px;
   font-family: Arial, sans-serif;
   text-align: center;
+  background-color: black;
 }
 
 #timer-container {
@@ -13,8 +14,17 @@ body {
 #countdown {
   font-size: 24px;
   margin-bottom: 10px;
+  color: green;
 }
 
 button {
   margin: 5px;
+  background-color: red;
+  color: black;
+}
+
+#footer {
+  color: green;
+  margin-top: 19px;
+  font-weight: bold;
 }
