@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "GegstTmer",
-  "version": "2.5",
-  "description": "Таймер",
+  "name": "GegstTimer",
+  "version": "3.1",
+  "description": "Таймер для продуктивности работяг.",
   "permissions": [
     "activeTab"
   ],
