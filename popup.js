@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var minutes = Math.floor((time % (60 * 60)) / 60);
   var seconds = Math.floor(time % 60);
 
-  return years + 'y ' + months + 'm ' + days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+  return years + 'y ' + months + 'mon ' + days + 'd ' + hours + 'h ' + minutes + 'min ' + seconds + 'sec';
 }
 
   function startCountdown(years, months, duration) {
