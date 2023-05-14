@@ -8,34 +8,35 @@ document.addEventListener('DOMContentLoaded', function() {
   var remainingTime = 0;
   var isPaused = false;
 
-  function formatTime(time) {
-    var days = Math.floor(time / (24 * 60 * 60));
-    var hours = Math.floor((time % (24 * 60 * 60)) / (60 * 60));
-    var minutes = Math.floor((time % (60 * 60)) / 60);
-    var seconds = Math.floor(time % 60);
+  function formatTime(time, years, months) {
+  var days = Math.floor(time / (24 * 60 * 60));
+  var hours = Math.floor((time % (24 * 60 * 60)) / (60 * 60));
+  var minutes = Math.floor((time % (60 * 60)) / 60);
+  var seconds = Math.floor(time % 60);
 
-    return days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+  return years + 'y ' + months + 'm ' + days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+}
+
+  function startCountdown(years, months, duration) {
+  if (countdownInterval) {
+    clearInterval(countdownInterval);
   }
 
-  function startCountdown(duration) {
-    if (countdownInterval) {
+  var startTime = Date.now();
+  var endTime = startTime + duration * 1000;
+
+  countdownInterval = setInterval(function() {
+    var currentTime = Date.now();
+    remainingTime = Math.max(0, endTime - currentTime);
+    countdownElement.textContent = formatTime(remainingTime / 1000, years, months);
+
+    if (remainingTime === 0) {
       clearInterval(countdownInterval);
+      countdownElement.textContent = 'Время вышло!';
     }
+  }, 1000);
+}
 
-    var startTime = Date.now();
-    var endTime = startTime + duration * 1000;
-
-    countdownInterval = setInterval(function() {
-      var currentTime = Date.now();
-      remainingTime = Math.max(0, endTime - currentTime);
-      countdownElement.textContent = formatTime(remainingTime / 1000);
-
-      if (remainingTime === 0) {
-        clearInterval(countdownInterval);
-        countdownElement.textContent = 'Время вышло!';
-      }
-    }, 1000);
-  }
 
   function pauseCountdown() {
     clearInterval(countdownInterval);
@@ -57,14 +58,17 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   startButton.addEventListener('click', function() {
-    var days = parseInt(prompt('Введите количество дней:'));
-    var hours = parseInt(prompt('Введите количество часов:'));
-    var minutes = parseInt(prompt('Введите количество минут:'));
-    var seconds = parseInt(prompt('Введите количество секунд:'));
+  var years = parseInt(prompt('Введите количество лет:'));
+  var months = parseInt(prompt('Введите количество месяцев:'));
+  var days = parseInt(prompt('Введите количество дней:'));
+  var hours = parseInt(prompt('Введите количество часов:'));
+  var minutes = parseInt(prompt('Введите количество минут:'));
+  var seconds = parseInt(prompt('Введите количество секунд:'));
 
-    var duration = (days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60) + seconds;
-    startCountdown(duration);
-  });
+  var duration = (days * 24 * 60 * 60) + (hours * 60 * 60) + (minutes * 60) + seconds;
+  startCountdown(years, months, duration);
+});
+
 
   pauseButton.addEventListener('click', function() {
     pauseCountdown();
